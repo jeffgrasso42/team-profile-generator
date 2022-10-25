@@ -37,7 +37,7 @@ describe('Engineer Class', () => {
   });
 
   describe('getRole', () => {
-    it('should return the role of the office engineer', () => {
+    it('should return the role "engineer"', () => {
       // Assign/Act
       const engineer = new Engineer(
         'John Doe',

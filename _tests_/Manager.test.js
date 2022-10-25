@@ -12,6 +12,7 @@ describe('Manager Class', () => {
         '1'
       );
 
+      // Assert
       expect(manager.name).toBe('John Doe');
       expect(manager.id).toBe('12345');
       expect(manager.email).toBe('johndoe@example.com');
@@ -30,6 +31,7 @@ describe('Manager Class', () => {
         '1'
       );
 
+      // Assert
       expect(manager.getRole()).toBe('manager');
     });
   });
