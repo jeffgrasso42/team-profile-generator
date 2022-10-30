@@ -1,10 +1,16 @@
 // DEPENDENCIES
+// npm
 const inquirer = require('inquirer');
-const Employee = require('../lib/Employee');
+
+// JS files
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
+/**
+ * Creates Manager class object based on user input
+ * @returns {object} the manager object
+ */
 const getManager = () =>
   inquirer
     .prompt([
@@ -31,10 +37,13 @@ const getManager = () =>
     ])
     .then(response => {
       const { name, id, email, officeNum } = response;
-      const managerObj = new Manager(name, id, email, officeNum);
-      return managerObj;
+      return new Manager(name, id, email, officeNum);
     });
 
+/**
+ * Checks if user wants to add an employee
+ * @returns {bool} response.choice
+ */
 const checkAddEmployee = () =>
   inquirer
     .prompt([
@@ -46,6 +55,10 @@ const checkAddEmployee = () =>
     ])
     .then(response => response.choice);
 
+/**
+ * Gets the type of Employee the user wants to add
+ * @returns {string} response.type (Engineer or Intern)
+ */
 const getEmployeeType = () =>
   inquirer
     .prompt([
@@ -58,6 +71,11 @@ const getEmployeeType = () =>
     ])
     .then(response => response.type);
 
+/**
+ * Creates Employee object based on user input
+ * @param {string} employeeType the subclass of the Employee object (Engineer or Intern)
+ * @returns {object}
+ */
 const getEmployee = employeeType => {
   const engineerQuestion = "Enter the Engineer's Github username:";
   const internQuestion = "Enter the name of the Intern's school:";
