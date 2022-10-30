@@ -17,18 +17,24 @@ const employees = [];
 // FUNCTIONS
 
 const init = async () => {
-  console.log(
-    'Welcome to "The Team," a profile generator to make team management easy'
-  );
+  let addEmployee = true;
+  console.log('Welcome to "The Team," a profile generator to make team management easy');
   const manager = await getManager();
   employees.push(manager);
+  console.log(manager);
   console.log(employees);
-  const employeesAdded = await getEmployees();
+  console.log();
+  while (addEmployee) {
+    const employeeType = getEmployeeType();
+    const employee = getEmployee(employeeType);
+    employees.push(employee);
+    addEmployee = checkAddEmployee();
+  }
 };
 
 // USER INTERACTIONS
-const getManager = () => {
-  const manager = inquirer
+const getManager = () =>
+  inquirer
     .prompt([
       {
         type: 'input',
@@ -56,24 +62,66 @@ const getManager = () => {
       const managerObj = new Manager(name, id, email, officeNum);
       return managerObj;
     });
-  return manager;
-};
 
-const getEmployees = () => {
+const checkAddEmployee = () => {
   inquirer
     .prompt([
       {
-        type: 'input',
-        message: 'How many Employees does this manager oversee:',
+        type: 'confirm',
+        message: 'Would you like to add an Employee to this team?',
+        name: 'choice',
+      },
+    ])
+    .then(response => response.choice);
+};
+
+const getEmployeeType = () => {
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        message: 'What type of employee would you like to add?',
+        choices: ['Engineer', 'Intern'],
         name: 'count',
       },
     ])
     .then(response => {
       const count = parseInt(response.count);
       for (let i = 0; i < count; i++) {
-        inquirer.prompt([]);
+        inquirer.prompt([{}]);
       }
     });
+};
+
+const getEmployee = type => {
+  internQuestions = {
+    name: 
+  }
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        message: 'What type of employee would you like to add?',
+        choices: ['Engineer', 'Intern'],
+        name: 'count',
+      },
+      {
+        type: 'input',
+        message: "Enter the Employee's ID number",
+        name: 'id',
+      },
+      {
+        type: 'input',
+        message: "Enter the Manager's email address",
+        name: 'email',
+      },
+      {
+        type: 'input',
+        message: "Enter the office number of the Manager's office",
+        name: 'officeNum',
+      },
+    ])
+    .then(response => {})
 };
 
 // INITIALIZATION
