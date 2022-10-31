@@ -22,6 +22,8 @@ Keeping track of your project teams can be challenging, this program allows you 
 
 ## Usage
 
+Video Guide: (https://drive.google.com/file/d/13EoFqjx9U5sXyVLUz8E0CL8cJFokRQUe/view)
+
 1. Enter the name, id, email and office number of the manager when prompted
 2. Choose what type of employee you want to add to the team (Engineer or Intern)
 3. Enter name, id, email, and either GitHub username for Engineers or School for Interns

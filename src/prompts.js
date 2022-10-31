@@ -80,6 +80,7 @@ const getEmployee = employeeType => {
   const engineerQuestion = "Enter the Engineer's Github username:";
   const internQuestion = "Enter the name of the Intern's school:";
   let question;
+  console.log(employeeType);
   if (employeeType === 'Engineer') question = engineerQuestion;
   else question = internQuestion;
   const employee = inquirer
@@ -107,7 +108,7 @@ const getEmployee = employeeType => {
     ])
     .then(response => {
       const { name, id, email, variableQuestion } = response;
-      if (employeeType === 'engineer') return new Engineer(name, id, email, variableQuestion);
+      if (employeeType === 'Engineer') return new Engineer(name, id, email, variableQuestion);
       else return new Intern(name, id, email, variableQuestion);
     });
   return employee;
